@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 from rdkit import Chem, rdBase
 from rdkit.Chem import Draw, AllChem
 from scientific_report import build_report
+from learning import module_help, academy
 from engine import ROOT,CFG,molecule,predict,outside,walk,features
 st.set_page_config(page_title='QuantumMatter AI',page_icon='⚛️',layout='wide')
 st.title('⚛ QuantumMatter AI')
@@ -15,9 +16,13 @@ st.info(tr('Research prototype. PCE is a computed molecular screening proxy, not
 @st.cache_data
 def table(n):return pd.read_csv(ROOT/'data'/n)
 rank=table('screening_ranked.csv'); known=table('known.csv').set_index('Canonical_SMILES').split.to_dict()
-page=st.sidebar.radio(tr('Module','Modul','Модуль'),['Molecular Explorer','AI Property Prediction','Quantum Walk Simulator','Material Screening','Research & Experiments'])
+page=st.sidebar.radio(tr('Module','Modul','Модуль'),['Molecular Explorer','AI Property Prediction','Quantum Walk Simulator','Material Screening','Research & Experiments','Öyrənmə mərkəzi'])
 if rdBase.rdkitVersion!=CFG['rdkit_version']:st.sidebar.warning(f'RDKit runtime {rdBase.rdkitVersion}; training {CFG["rdkit_version"]}. Feature compatibility should be checked.')
-if page in ['Molecular Explorer','AI Property Prediction','Quantum Walk Simulator']:
+st.sidebar.caption('📘 Şagirdlər üçün: Öyrənmə mərkəzi')
+module_help(page)
+if page == 'Öyrənmə mərkəzi':
+    academy()
+elif page in ['Molecular Explorer','AI Property Prediction','Quantum Walk Simulator']:
     sample=st.selectbox(tr('Reference example','Nümunə','Пример'),list(range(1,6)),format_func=lambda i:f'CEPDB candidate #{i}')
     s=st.text_area('SMILES',rank.iloc[sample-1].Canonical_SMILES,key=f'smiles_{sample}')
     try:m=molecule(s)
