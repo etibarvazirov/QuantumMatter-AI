@@ -1,0 +1,59 @@
+{
+  "descriptor_names": [
+    "MolWt",
+    "MolLogP",
+    "TPSA",
+    "NumHDonors",
+    "NumHAcceptors",
+    "NumRotatableBonds",
+    "NumAromaticRings",
+    "NumAliphaticRings",
+    "NumHeteroatoms",
+    "RingCount",
+    "FractionCSP3",
+    "BalabanJ",
+    "BertzCT",
+    "Chi0",
+    "Chi1",
+    "Kappa1",
+    "Kappa2",
+    "Kappa3",
+    "NumAtoms",
+    "NumBonds",
+    "NumConjugatedBonds"
+  ],
+  "morgan_radius": 2,
+  "morgan_bits": 2048,
+  "targets": [
+    "HOMO",
+    "LUMO",
+    "PCE"
+  ],
+  "seeds": [
+    42,
+    142,
+    242
+  ],
+  "interval_half_width": {
+    "HOMO": 0.14847278594970703,
+    "LUMO": 0.16935801506042614,
+    "PCE": 1.76463782787323,
+    "Energy_Gap": 0.23446154594421387
+  },
+  "nominal_coverage": 0.9,
+  "params": {
+    "n_estimators": 100,
+    "max_depth": 4,
+    "learning_rate": 0.08,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "tree_method": "hist",
+    "objective": "reg:squarederror",
+    "n_jobs": 2
+  },
+  "rdkit_version": "2026.09.2",
+  "runtime_rdkit": "2026.09.2",
+  "xgboost_version": "3.4.1",
+  "manifest_sha256": "cc07afdc4125a8059957147e6ce6192dac6762163bb9ed6f1bf290d89358fe40",
+  "gap": "LUMO-HOMO"
+}

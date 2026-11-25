@@ -1,0 +1,7 @@
+{
+  "top_k": 100,
+  "mean_reference_PCE_top": 9.63806634426117,
+  "mean_reference_PCE_all": 4.4103300605019555,
+  "top_k_precision_reference_top_decile": 0.93,
+  "reference_top_decile_threshold": 8.208942794799805
+}
